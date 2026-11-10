@@ -77,38 +77,19 @@
     }
 
     function updateField(field) {
-      const nextField = [];
-
-      for(let y = 0; y < field.length; y++) {
-
-        nextField[y] = [];
-
-        for(let x = 0; x < field[y].length; x++) {
+      return field.map((row, y) => 
+        row.map((cell, x) => {
 
           const livingCells = countNeighborLivingCells(field, x, y);
 
-          if(field[y][x] === 1) {
-
-            if(livingCells === 2 || livingCells === 3) {
-              nextField[y][x] = 1;
-            } else {
-              nextField[y][x] = 0;
-            }
-
+          if(cell === 1) {
+            return (livingCells === 2 || livingCells === 3) ? 1 : 0;
           } else {
-
-            if(livingCells === 3) {
-              nextField[y][x] = 1;
-            } else {
-              nextField[y][x] = 0;
-            }
-
+            return livingCells === 3 ? 1 : 0;
           }
 
-        }
-      }
-
-      return nextField;
+        })
+      );
     }
 
     updateField(field);
