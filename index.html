@@ -76,12 +76,44 @@
       return count;
     }
 
-    drawField(field);
+    function updateField(field) {
+      const nextField = [];
 
-    
-    console.log("(3, 4) " + countNeighborLivingCells(field, 3, 4));
-    console.log("(0, 0) " + countNeighborLivingCells(field, 0, 0));
-    console.log("(9, 9) " + countNeighborLivingCells(field, 9, 9));
+      for(let y = 0; y < field.length; y++) {
+
+        nextField[y] = [];
+
+        for(let x = 0; x < field[y].length; x++) {
+
+          const livingCells = countNeighborLivingCells(field, x, y);
+
+          if(field[y][x] === 1) {
+
+            if(livingCells === 2 || livingCells === 3) {
+              nextField[y][x] = 1;
+            } else {
+              nextField[y][x] = 0;
+            }
+
+          } else {
+
+            if(livingCells === 3) {
+              nextField[y][x] = 1;
+            } else {
+              nextField[y][x] = 0;
+            }
+
+          }
+
+        }
+      }
+
+      return nextField;
+    }
+
+    updateField(field);
+
+    drawField(field);
   </script>
 </body>
 </html>
