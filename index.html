@@ -41,25 +41,11 @@
     }
 
     function initField() {
-      const newField = [];
-      for(let y = 0; y < GAME_SIZE; y++) {
-
-        newField[y] = [];
-
-        for(let x = 0; x < GAME_SIZE; x++) {
-
-          const randomValue = Math.random();
-
-          if(randomValue > 0.5) {
-            newField[y][x] = 1;
-          } else {
-            newField[y][x] = 0;
-          }
-
-        }
-      }
-
-      return newField;
+      return Array.from({ length: GAME_SIZE }, () => 
+        Array.from({ length: GAME_SIZE }, () => 
+          Math.random() > 0.5 ? 1 : 0
+        )
+      );
     }
 
     drawField(field);
