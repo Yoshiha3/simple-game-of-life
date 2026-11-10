@@ -56,22 +56,21 @@
     }
     
     function countNeighborLivingCells(field, x, y) {
-      const directions = [
-        [-1, -1], [ 0, -1], [ 1, -1],
-        [-1,  0],           [ 1,  0],
-        [-1,  1], [ 0,  1], [ 1,  1]
-      ];
-
       let count = 0;
 
-      for(let i = 0; i < directions.length; i++) {
+      for(let dx = -1; dx <= 1; dx++) {
+        for(let dy = -1; dy <= 1; dy++) {
 
-        const checkX = x + directions[i][0];
-        const checkY = y + directions[i][1];
+          if(dx === 0 && dy === 0) continue;
 
-        if(!isInField(checkX, checkY)) continue;
+          const checkX = x + dx;
+          const checkY = y + dy;
 
-        if(field[checkY][checkX] === 1) count++;
+          if(!isInField(checkX, checkY)) continue;
+
+          if(field[checkY][checkX] === 1) count++;
+
+        }
       }
 
       return count;
