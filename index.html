@@ -15,7 +15,10 @@
     canvas.width = CANVAS_SIZE;
     canvas.height = CANVAS_SIZE;
 
-    context.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    const GAME_SIZE = 10;
+    const CELL_SIZE = CANVAS_SIZE / GAME_SIZE;
+
+    context.fillRect(0, 0, CELL_SIZE, CELL_SIZE);
   </script>
 </body>
 </html>
