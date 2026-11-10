@@ -48,7 +48,19 @@
       );
     }
 
+    function isInField(x, y) {
+      return (
+        0 <= x && x < GAME_SIZE &&
+        0 <= y && y < GAME_SIZE
+      );
+    }
+
     drawField(field);
+
+    
+    console.log("(3, 4) " + isInField(3, 4));
+    console.log("(0, -1) " + isInField(0, -1));
+    console.log("(10, 5) " + isInField(10, 5));
   </script>
 </body>
 </html>
