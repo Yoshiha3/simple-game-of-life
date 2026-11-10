@@ -18,13 +18,41 @@
     const GAME_SIZE = 10;
     const CELL_SIZE = CANVAS_SIZE / GAME_SIZE;
 
+    let field = [
+      [0, 1, 0, 1, 0,  1, 0, 1, 0, 1],
+      [1, 0, 1, 0, 1,  0, 1, 0, 1, 0],
+      [0, 1, 0, 1, 0,  1, 0, 1, 0, 1],
+      [1, 0, 1, 0, 1,  0, 1, 0, 1, 0],
+      [0, 1, 0, 1, 0,  1, 0, 1, 0, 1],
+
+      [1, 0, 1, 0, 1,  0, 1, 0, 1, 0],
+      [0, 1, 0, 1, 0,  1, 0, 1, 0, 1],
+      [1, 0, 1, 0, 1,  0, 1, 0, 1, 0],
+      [0, 1, 0, 1, 0,  1, 0, 1, 0, 1],
+      [1, 0, 1, 0, 1,  0, 1, 0, 1, 0]
+    ];
+
     function drawCell(x, y) {
       const drawX = x * CELL_SIZE;
       const drawY = y * CELL_SIZE;
       context.fillRect(drawX, drawY, CELL_SIZE, CELL_SIZE);
     }
 
-    drawCell(1, 1);
+    function drawField(field) {
+      context.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+
+      for(let y = 0; y < field.length; y++) {
+        for(let x = 0; x < field[y].length; x++) {
+
+          if(field[y][x] === 0) continue;
+
+          drawCell(x, y);
+
+        }
+      }
+    }
+
+    drawField(field);
   </script>
 </body>
 </html>
