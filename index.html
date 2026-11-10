@@ -18,19 +18,7 @@
     const GAME_SIZE = 10;
     const CELL_SIZE = CANVAS_SIZE / GAME_SIZE;
 
-    let field = [
-      [0, 1, 0, 1, 0,  1, 0, 1, 0, 1],
-      [1, 0, 1, 0, 1,  0, 1, 0, 1, 0],
-      [0, 1, 0, 1, 0,  1, 0, 1, 0, 1],
-      [1, 0, 1, 0, 1,  0, 1, 0, 1, 0],
-      [0, 1, 0, 1, 0,  1, 0, 1, 0, 1],
-
-      [1, 0, 1, 0, 1,  0, 1, 0, 1, 0],
-      [0, 1, 0, 1, 0,  1, 0, 1, 0, 1],
-      [1, 0, 1, 0, 1,  0, 1, 0, 1, 0],
-      [0, 1, 0, 1, 0,  1, 0, 1, 0, 1],
-      [1, 0, 1, 0, 1,  0, 1, 0, 1, 0]
-    ];
+    let field = initField();
 
     function drawCell(x, y) {
       const drawX = x * CELL_SIZE;
@@ -50,6 +38,28 @@
 
         }
       }
+    }
+
+    function initField() {
+      const newField = [];
+      for(let y = 0; y < GAME_SIZE; y++) {
+
+        newField[y] = [];
+
+        for(let x = 0; x < GAME_SIZE; x++) {
+
+          const randomValue = Math.random();
+
+          if(randomValue > 0.5) {
+            newField[y][x] = 1;
+          } else {
+            newField[y][x] = 0;
+          }
+
+        }
+      }
+
+      return newField;
     }
 
     drawField(field);
