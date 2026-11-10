@@ -18,6 +18,8 @@
     const GAME_SIZE = 10;
     const CELL_SIZE = CANVAS_SIZE / GAME_SIZE;
 
+    const FPS = 4;
+
     let field = initField();
 
     function drawCell(x, y) {
@@ -97,7 +99,7 @@
       drawField(field);
     }
 
-    setInterval(gameLoop, 1000 / 4);
+    setInterval(gameLoop, 1000 / FPS);
   </script>
 </body>
 </html>
