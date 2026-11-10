@@ -54,13 +54,35 @@
         0 <= y && y < GAME_SIZE
       );
     }
+    
+    function countNeighborLivingCells(field, x, y) {
+      const directions = [
+        [-1, -1], [ 0, -1], [ 1, -1],
+        [-1,  0],           [ 1,  0],
+        [-1,  1], [ 0,  1], [ 1,  1]
+      ];
+
+      let count = 0;
+
+      for(let i = 0; i < directions.length; i++) {
+
+        const checkX = x + directions[i][0];
+        const checkY = y + directions[i][1];
+
+        if(!isInField(checkX, checkY)) continue;
+
+        if(field[checkY][checkX] === 1) count++;
+      }
+
+      return count;
+    }
 
     drawField(field);
 
     
-    console.log("(3, 4) " + isInField(3, 4));
-    console.log("(0, -1) " + isInField(0, -1));
-    console.log("(10, 5) " + isInField(10, 5));
+    console.log("(3, 4) " + countNeighborLivingCells(field, 3, 4));
+    console.log("(0, 0) " + countNeighborLivingCells(field, 0, 0));
+    console.log("(9, 9) " + countNeighborLivingCells(field, 9, 9));
   </script>
 </body>
 </html>
