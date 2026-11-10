@@ -18,7 +18,13 @@
     const GAME_SIZE = 10;
     const CELL_SIZE = CANVAS_SIZE / GAME_SIZE;
 
-    context.fillRect(0, 0, CELL_SIZE, CELL_SIZE);
+    function drawCell(x, y) {
+      const drawX = x * CELL_SIZE;
+      const drawY = y * CELL_SIZE;
+      context.fillRect(drawX, drawY, CELL_SIZE, CELL_SIZE);
+    }
+
+    drawCell(1, 1);
   </script>
 </body>
 </html>
